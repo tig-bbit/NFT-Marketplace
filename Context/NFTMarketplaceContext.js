@@ -5,8 +5,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 
-const projectId = process.env.NEXT_PUBLIC_POJECT_ID;
-const projectSecretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
+const projectId = "2N1DaWXTPEwXbaKhhuaHot3bevl";
+const projectSecretKey = "0784dc561c34ca80f4f5e0a3ae312411";
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
   "base64"
 )}`;
