@@ -5,12 +5,11 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { create as ipfsHttpClient } from "ipfs-http-client";
 
-const projectId = "2N1DaWXTPEwXbaKhhuaHot3bevl";
-const projectSecretKey = "0784dc561c34ca80f4f5e0a3ae312411";
+const projectId = process.env.NEXT_PUBLIC_POJECT_ID;
+const projectSecretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 const auth = `Basic ${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
   "base64"
 )}`;
-
 const subdomain = process.env.NEXT_PUBLIC_SUBDOMAIN;
 
 const client = ipfsHttpClient({
@@ -186,15 +185,14 @@ export const NFTMarketplaceProvider = ({ children }) => {
 
   const fetchNFTs = async () => {
     try {
-      // const provider = new ethers.providers.JsonRpcProvider(
-      //   //--process.env.NEXT_PUBLIC_POLYGON_MUMBAI_RPC
-      //   "https://polygon-mumbai.g.alchemy.com/v2/60rvu9HIOq9MegI34H6WERZtuzMnMT-6"
-      // );
+      const provider = new ethers.providers.JsonRpcProvider(
+        "https://polygon-mumbai.g.alchemy.com/v2/60rvu9HIOq9MegI34H6WERZtuzMnMT-6"
+      );
 
       // LOCALHOST
-      const web3Modal = new Web3Modal();
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
+      // const web3Modal = new Web3Modal();
+      // const connection = await web3Modal.connect();
+      // const provider = new ethers.providers.Web3Provider(connection);
 
       const contract = fetchContract(provider);
 
