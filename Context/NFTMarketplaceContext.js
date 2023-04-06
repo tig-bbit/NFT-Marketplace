@@ -3,7 +3,7 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { useRouter } from "next/router";
 import axios from "axios";
-const ipfsClient = require('ipfs-http-client');
+import * as ipfsClient from 'ipfs-http-client';
 
 const projectId = "2N1DaWXTPEwXbaKhhuaHot3bevl";
 const projectSecretKey = "0784dc561c34ca80f4f5e0a3ae312411";
