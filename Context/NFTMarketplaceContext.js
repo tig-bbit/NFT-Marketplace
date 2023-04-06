@@ -3,22 +3,25 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { create as ipfsHttpClient } from "ipfs-http-client";
+const ipfsClient = require('ipfs-http-client');
 
 const projectId = "2N1DaWXTPEwXbaKhhuaHot3bevl";
 const projectSecretKey = "0784dc561c34ca80f4f5e0a3ae312411";
-const auth = `Basic ${Buffer.from(`${projectId}:${projectSecretKey}`).toString(
-  "base64"
-)}`;
-const subdomain = process.env.NEXT_PUBLIC_SUBDOMAIN;
+const subdomain = "https://julian-nft-marketplace.infura-ipfs.io";
+const auth =
+    'Basic ' + Buffer.from(projectId + ':' + projectSecretKey).toString('base64');
 
-const client = ipfsHttpClient({
-  host: "infura-ipfs.io",
+const client = ipfsClient.create({
+  host: 'ipfs.infura.io',
   port: 5001,
-  protocol: "https",
+  protocol: 'https',
   headers: {
-    authorization: auth,
+      authorization: auth,
   },
+});
+
+client.pin.add('QmeGAVddnBSnKc1DLE7DLV9uuTqo5F7QbaveTjr45JUdQn').then((res) => {
+  console.log(res);
 });
 
 //INTERNAL  IMPORT
